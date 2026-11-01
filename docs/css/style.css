@@ -1139,11 +1139,6 @@ footer .fin { font-family: var(--serif); font-size: 1.6rem; font-style: italic; 
   .carte { padding-left: calc(var(--voie) + 20px); }
   .journal li { grid-template-columns: 1fr; gap: 0; }
   .journal .date { line-height: 1.6; }
-  /* Sur mobile, les photos défilent à l'horizontale, une à la fois */
-  .galerie.musique { display: flex; gap: 16px; margin-right: -16px; padding: 0 16px 8px 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .galerie.musique::before { display: none; }
-  .galerie.musique figure, .galerie.musique figure:nth-child(n) { flex: 0 0 68vw; width: auto; margin: 0; scroll-snap-align: start; }
-  .galerie.musique figure:nth-child(4) { flex-basis: 84vw; }
   #rose { width: 54px; height: 54px; left: auto; right: 12px; bottom: 16px; }
   .defile .fiche p, .defile .volets li { font-size: 0.9rem; }
   .effervescence .ecran { height: 82svh; }
@@ -1202,6 +1197,26 @@ footer .fin { font-family: var(--serif); font-size: 1.6rem; font-style: italic; 
   .detail > div { display: block; min-height: 0; overflow: hidden; }
   .detail > div > :first-child { margin-top: 12px; }
   .depliable.ouvert .detail { grid-template-rows: 1fr; visibility: visible; }
+
+  /* Photos : entières et les unes sous les autres, on les voit toutes en descendant
+     (!important : main.js règle la hauteur et le décalage de la galerie épinglée) */
+  .traversee { width: auto; height: auto !important; margin-left: 0 !important; }
+  .traversee .ecran { position: static; display: block; height: auto; overflow: visible; background: none; }
+  .traversee .compteur, .traversee .jauge { display: none; }
+  .traversee .bande, .galerie.musique {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 22px;
+    align-items: start;
+    padding: 0;
+    transform: none;
+  }
+  .traversee img, .galerie.musique img { width: 100%; height: auto; max-width: none; object-fit: contain; }
+  .traversee img { padding: 6px; border-radius: 14px; }
+  .galerie.musique { margin-bottom: 40px; }
+  .galerie.musique::before { display: none; }
+  .galerie.musique figure:nth-child(n) { grid-column: auto; width: auto; margin: 0; }
+  .galerie.musique figure:nth-child(n) .cadre-image { aspect-ratio: auto; height: auto; }
 
   /* Sport et Musique : les premières lignes, le reste au bouton */
   .journal.replie li:nth-child(n + 4) { display: none; }
