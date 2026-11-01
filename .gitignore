@@ -1,0 +1,10 @@
+node_modules/
+.env
+
+# Originaux et fichiers personnels : uniquement en local (dépôt public)
+CV/
+CV.txt
+fond_mon_profil/
+musique/
+photos_proj/
+sauvetage/
