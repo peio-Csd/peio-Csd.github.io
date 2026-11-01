@@ -1124,6 +1124,10 @@ footer {
 }
 footer .fin { font-family: var(--serif); font-size: 1.6rem; font-style: italic; letter-spacing: 0; color: var(--texte); }
 
+/* Sur ordinateur, le détail reste ouvert et les boutons de repli n'existent pas */
+.deplier, .plus { display: none; }
+.detail, .detail > div { display: contents; }
+
 @media (max-width: 980px) {
   #accueil { height: auto; min-height: 100svh; }
   .accueil-grille { grid-template-columns: 1fr; padding: 72px 16px 110px; }
@@ -1142,15 +1146,79 @@ footer .fin { font-family: var(--serif); font-size: 1.6rem; font-style: italic; 
   .galerie.musique figure:nth-child(4) { flex-basis: 84vw; }
   #rose { width: 54px; height: 54px; left: auto; right: 12px; bottom: 16px; }
   .defile .fiche p, .defile .volets li { font-size: 0.9rem; }
-  .defile .ecran { height: 82svh; }
+  .effervescence .ecran { height: 82svh; }
   .effervescence .fiche { grid-template-columns: 1fr; align-content: center; gap: 14px; inset: 36px 0 20px; padding: 18px; overflow-y: auto; }
   .effervescence .plaque { width: min(100%, 44svh); margin: 0 auto; }
-  .frise .ecran { grid-template-columns: 1fr; }
-  .frise .jauge { left: 6px; }
-  .frise .fiche:nth-of-type(n) { grid-column: 1; margin: 0 0 28px 30px; border-right: 1px solid var(--ligne); border-left: 2px solid var(--laiton); --cote: -1; }
-  .frise .fiche:nth-of-type(n)::before { left: -32px; right: auto; }
-  .surface { left: 12px; right: auto; bottom: 20px; }
+  /* Le bouton de remontée se réduit à sa bulle pour ne pas couvrir le texte */
+  .surface { left: 12px; right: auto; bottom: 20px; width: 40px; height: 40px; padding: 0; font-size: 0; letter-spacing: 0; }
   .profondeur { top: 12px; right: 12px; }
+}
+
+/* ---------- Mode compact : téléphones et tablettes (écran tactile ou fenêtre étroite) ---------- */
+@media (max-width: 980px), (hover: none) and (pointer: coarse) {
+  /* Frise sur une seule colonne : l'année et le titre, le détail se déplie */
+  .frise .ecran { grid-template-columns: minmax(0, 1fr); padding: 8px 0 24px; }
+  .frise .jauge { left: 6px; }
+  .frise .fiche:nth-of-type(n) { grid-column: 1; margin: 0 0 12px 30px; padding: 14px 16px; border-right: 1px solid var(--ligne); border-left: 2px solid var(--laiton); --cote: -1; }
+  .frise .fiche:nth-of-type(n)::before { left: -32px; right: auto; top: calc(14px + 0.75rem - 6.5px); }
+  .frise .fiche .date { margin-bottom: 2px; font-size: 1.5rem; }
+  .frise .fiche h4 { margin: 0; font-size: 1.2rem; }
+
+  /* Compétences : deux colonnes dès que la place le permet, le titre seul par défaut */
+  .bulles { gap: 10px; align-items: start; }
+  .bulle { padding: 14px 16px; }
+  .bulle h4 { margin: 0; }
+
+  .depliable, .fiche .corps.depliable { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .depliable > :not(.deplier) { grid-column: 1; justify-self: start; }
+  .depliable > .deplier { grid-column: 2; grid-row: 1 / span 2; }
+  .depliable > .detail { grid-column: 1 / -1; justify-self: stretch; }
+  .deplier {
+    display: block;
+    position: relative;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid rgba(220, 184, 120, 0.4);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+  }
+  .deplier::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -6px 0 0 -4px;
+    border-right: 1.5px solid var(--laiton);
+    border-bottom: 1.5px solid var(--laiton);
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+  }
+  .depliable.ouvert .deplier::after { transform: translateY(4px) rotate(225deg); }
+  .detail { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows 0.3s ease, visibility 0.3s; }
+  .detail > div { display: block; min-height: 0; overflow: hidden; }
+  .detail > div > :first-child { margin-top: 12px; }
+  .depliable.ouvert .detail { grid-template-rows: 1fr; visibility: visible; }
+
+  /* Sport et Musique : les premières lignes, le reste au bouton */
+  .journal.replie li:nth-child(n + 4) { display: none; }
+  .plus {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 11px 16px;
+    border: 1px solid rgba(220, 184, 120, 0.4);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    color: var(--laiton);
+    background: none;
+    cursor: pointer;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

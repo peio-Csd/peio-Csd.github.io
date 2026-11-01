@@ -259,6 +259,45 @@ function creerFiche(item, i, classes) {
   return fiche;
 }
 
+// Mode compact (téléphones et tablettes, voir la fin de css/style.css) : le détail est replié
+// et s'ouvre d'un appui sur l'élément. Sur ordinateur, le bouton est masqué et le détail visible.
+function rendreDepliable(el, detail) {
+  if (!detail) return;
+  const volet = creer('div', 'detail');
+  const interieur = creer('div');
+  detail.replaceWith(volet);
+  interieur.appendChild(detail);
+  volet.appendChild(interieur);
+  const bouton = creer('button', 'deplier');
+  bouton.type = 'button';
+  bouton.setAttribute('aria-label', T.detail);
+  bouton.setAttribute('aria-expanded', 'false');
+  volet.before(bouton);
+  el.classList.add('depliable');
+  el.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    bouton.setAttribute('aria-expanded', el.classList.toggle('ouvert'));
+  });
+}
+
+// Longue liste datée d'un cadre : en mode compact, seules les premières lignes sont affichées
+const LIGNES_COMPACTES = 3;
+function rendreRepliable(ul) {
+  const cachees = ul.children.length - LIGNES_COMPACTES;
+  if (cachees < 1) return null;
+  const bouton = creer('button', 'plus', T.voirAutres(cachees));
+  bouton.type = 'button';
+  bouton.setAttribute('aria-expanded', 'false');
+  ul.classList.add('replie');
+  bouton.addEventListener('click', () => {
+    const replie = ul.classList.toggle('replie');
+    bouton.textContent = replie ? T.voirAutres(cachees) : T.reduire;
+    bouton.setAttribute('aria-expanded', !replie);
+    if (replie) bouton.scrollIntoView({ block: 'nearest' });
+  });
+  return bouton;
+}
+
 // Expériences : toutes les fiches côte à côte
 function creerCases(liste) {
   const div = creer('div', 'cases');
@@ -279,7 +318,11 @@ function creerDefile(bloc, mode) {
   ecran.appendChild(compteur);
   bloc.liste.forEach((item, i) => {
     const fiche = creerFiche(item, i, mode === 'frise' ? 'revele' : '');
-    if (mode === 'frise') fiche.style.gridRow = i + 1;
+    if (mode === 'frise') {
+      fiche.style.gridRow = i + 1;
+      const corps = fiche.querySelector('.corps');
+      rendreDepliable(corps, corps.querySelector(':scope > p, :scope > .volets'));
+    }
     ecran.appendChild(fiche);
   });
   ecran.appendChild(creer('span', 'jauge'));
@@ -397,6 +440,7 @@ function creerBulles(liste) {
     } else {
       bulle.appendChild(creer('p', null, majuscule(texte)));
     }
+    rendreDepliable(bulle, bulle.querySelector(':scope > p, :scope > .pastilles'));
     div.appendChild(bulle);
   });
   return div;
@@ -414,7 +458,10 @@ function creerBloc(bloc, numero, intro) {
     div.appendChild(creerDefile(bloc, bloc.affichage));
   } else if (bloc.liste) {
     const affichages = { cases: creerCases, bulles: creerBulles };
-    div.appendChild((affichages[bloc.affichage] || creerListe)(bloc.liste));
+    const liste = (affichages[bloc.affichage] || creerListe)(bloc.liste);
+    div.appendChild(liste);
+    const plus = bloc.cadre && liste.matches('.journal') && rendreRepliable(liste);
+    if (plus) div.appendChild(plus);
   }
   // Le CV se télécharge, sur sa propre ligne sous les liens de contact
   if (bloc.cv) {
@@ -747,6 +794,12 @@ document.querySelector('footer a[href="#accueil"]').addEventListener('click', re
 observerApparitions();
 mettreEnPage();
 addEventListener('resize', mettreEnPage);
+// Déplier une fiche change la hauteur de la carte : la route et les sondes suivent
+let attenteMiseEnPage;
+new ResizeObserver(() => {
+  clearTimeout(attenteMiseEnPage);
+  attenteMiseEnPage = setTimeout(mettreEnPage, 150);
+}).observe(carte);
 addEventListener('load', mettreEnPage);
 if (document.fonts) document.fonts.ready.then(mettreEnPage);
 document.querySelectorAll('.traversee img').forEach((img) => img.addEventListener('load', mettreEnPage));

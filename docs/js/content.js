@@ -74,7 +74,7 @@ const CONTENT_FR = {
           "titre": "Formation",
           "affichage": "frise",
           "liste": [
-            "2011 — Entrée au conservatoire, je commence le trombone au Conservatoire Maurice Ravel de Bayonne. Je commence en parallèle le sauvetage sportif au club de sauvetage sportif Biarritz Sauvetage Côtier",
+            "2011 — Entrée au conservatoire : je commence le trombone au Conservatoire Maurice Ravel de Bayonne. Je commence en parallèle le sauvetage sportif au club de sauvetage sportif Biarritz Sauvetage Côtier",
             "2020 — Lycée André Malraux, Biarritz : entrée en filière générale, en menant de front le conservatoire et le sauvetage sportif en compétition",
             "2022 — Musique et secourisme : Certificat d'Études Musicales : diplôme de fin de cycle obtenu au conservatoire ; Secourisme : formations PSE1, PSE2, BNSSA et SSAL avec Biarritz Sauvetage Côtier, jusqu'en 2023",
             "2023 — Baccalauréat et entrée à l'INSA Rennes : Baccalauréat général : obtenu au Lycée André Malraux, en même temps que la fin de mon parcours au conservatoire ; Artiste de Haut Niveau : admis à l'INSA Rennes avec ce statut, qui aménage le cursus pour concilier études d'ingénieur et pratique musicale ; Tronc commun : deux années de formation scientifique générale avant le choix d'une spécialité",

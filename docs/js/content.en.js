@@ -74,7 +74,7 @@ const CONTENT_EN = {
           "titre": "Education",
           "affichage": "frise",
           "liste": [
-            "2011 — Joining the conservatoire, I started the trombone at the Conservatoire Maurice Ravel in Bayonne. At the same time, I took up lifesaving sport at the Biarritz Sauvetage Côtier club",
+            "2011 — Joining the conservatoire: I started the trombone at the Conservatoire Maurice Ravel in Bayonne. At the same time, I took up lifesaving sport at the Biarritz Sauvetage Côtier club",
             "2020 — Lycée André Malraux, Biarritz: entered the general track, while keeping up both the conservatoire and competitive lifesaving",
             "2022 — Music and first aid: Certificat d'Études Musicales: end-of-cycle diploma from the conservatoire; First aid: PSE1, PSE2, BNSSA and SSAL training with Biarritz Sauvetage Côtier, until 2023",
             "2023 — Baccalauréat and admission to INSA Rennes: General baccalauréat: obtained at Lycée André Malraux, as I finished my time at the conservatoire; High-Level Artist: admitted to INSA Rennes with this status, which adapts the curriculum to combine engineering studies and musical practice; Common core: two years of general scientific training before choosing a specialisation",

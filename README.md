@@ -52,6 +52,10 @@ Chaque section contient des **blocs**. Un bloc accepte :
 
 Pour ajouter une section (ex : « Voyages »), ajoute un objet `{ "titre": ..., "blocs": [...] }` dans `sections`. Le premier bloc de la première section s'affiche toujours dans la console de l'accueil.
 
+## Téléphones et tablettes
+
+Sur écran tactile ou fenêtre de moins de 980 px, le site passe en mode compact (dernier bloc `@media` de `css/style.css`) : les fiches de Formation et de Compétences n'affichent que leur titre et se déplient d'un appui, et les listes des cadres Sport et Musique n'affichent que leurs 3 premières lignes (`LIGNES_COMPACTES` dans `main.js`) avec un bouton « Voir les N autres ». Sur ordinateur, tout reste ouvert. Dans la frise, écris chaque ligne « date — titre : détail » pour que le titre soit court.
+
 ## Changer une photo
 
 Mets ta photo dans `docs/images/` puis change le `src` correspondant dans `content.js`.
