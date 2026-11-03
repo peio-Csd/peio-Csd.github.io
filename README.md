@@ -74,19 +74,3 @@ convert photos_proj/Logo.png -trim +repage -resize '800x>' -strip docs/images/lo
 Les originaux sont dans `fond_mon_profil/`, `sauvetage/`, `musique/` et `photos_proj/`. Les versions web sont réduites, sans métadonnées (`-strip`, ce qui retire aussi la position GPS), et jamais agrandies : les photos de faible résolution vont dans les petites cases des galeries.
 
 Les couleurs du site (variables en haut de `css/style.css`) sont tirées de `images/profil.jpg`.
-
-## Mise en ligne
-
-Le site est publié sur https://caussade.dev par GitHub Pages, depuis le dossier `docs/` de la branche `main` du dépôt `peio-Csd/peio-Csd.github.io`. Il n'y a rien à construire :
-
-```bash
-git add .
-git commit -m "Description de la modification"
-git push
-```
-
-Le site est à jour environ une minute plus tard.
-
-- Ne supprime pas `docs/CNAME` (il garde le domaine) ni `docs/.nojekyll`.
-- Le dépôt est public : `.gitignore` laisse en local les originaux (`fond_mon_profil/`, `sauvetage/`, `musique/`, `photos_proj/`, `CV/`) et `CV.txt`. Seules les versions web de `docs/` sont publiées.
-- Pour changer le CV en ligne, remplace `docs/documents/CV_Alexandre_Caussade.pdf`.
