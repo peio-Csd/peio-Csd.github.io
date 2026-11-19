@@ -23,6 +23,12 @@ const TEXTES = {
     dechiffre: 'Déchiffrement terminé · 100 %',
     integrite: '✓ Intégrité vérifiée — signature conforme',
     zones: ['Zone éclairée', 'Zone crépusculaire', 'Zone de minuit', 'Abysses'],
+    vestiges: {
+      cachalot: 'Le cachalot plonge jusqu\'ici pour chasser le calmar',
+      sources: 'Sources hydrothermales, découvertes en 1977',
+      titanic: 'Épave du Titanic, retrouvée en 1985',
+      nautile: 'Le sous-marin Nautile peut descendre jusqu\'ici',
+    },
     choixLangue: 'Langue',
     profil: 'Mon profil',
     connexion: 'Connexion sécurisée · Mon profil',
@@ -54,6 +60,12 @@ const TEXTES = {
     dechiffre: 'Decryption complete · 100%',
     integrite: '✓ Integrity verified — signature valid',
     zones: ['Sunlight zone', 'Twilight zone', 'Midnight zone', 'Abyss'],
+    vestiges: {
+      cachalot: 'Sperm whales dive this deep to hunt squid',
+      sources: 'Hydrothermal vents, discovered in 1977',
+      titanic: 'Wreck of the Titanic, found in 1985',
+      nautile: 'The submersible Nautile can dive this deep',
+    },
     choixLangue: 'Language',
     profil: 'My profile',
     connexion: 'Secure connection · My profile',
@@ -67,16 +79,20 @@ const TEXTES = {
   },
 };
 
+// Seules ces langues sont acceptées. On ne teste pas TEXTES[valeur] : « constructor » ou
+// « toString » existent sur tout objet et passeraient pour des langues.
+const LANGUES = Object.keys(TEXTES);
+
 function choisirLangue() {
   const demandee = new URLSearchParams(location.search).get('lang');
+  if (LANGUES.includes(demandee)) {
+    try { localStorage.setItem('langue', demandee); } catch (e) { /* stockage bloqué : le lien suffit */ }
+    return demandee;
+  }
   try {
-    if (TEXTES[demandee]) localStorage.setItem('langue', demandee);
-    else {
-      const memorisee = localStorage.getItem('langue');
-      if (TEXTES[memorisee]) return memorisee;
-    }
+    const memorisee = localStorage.getItem('langue');
+    if (LANGUES.includes(memorisee)) return memorisee;
   } catch (e) { /* stockage bloqué : on retombe sur la préférence du navigateur */ }
-  if (TEXTES[demandee]) return demandee;
   const preferee = (navigator.languages || [navigator.language]).find((l) => /^(fr|en)\b/i.test(l || ''));
   return preferee ? preferee.slice(0, 2).toLowerCase() : 'en';
 }

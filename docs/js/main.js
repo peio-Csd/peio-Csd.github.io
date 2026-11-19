@@ -9,7 +9,7 @@ const carte = document.querySelector('.carte');
 const SVG = 'http://www.w3.org/2000/svg';
 
 // La photo de la première section devient le fond de l'écran d'accueil
-const PHOTO_ACCUEIL = (CONTENT.sections[0].photo || { src: 'images/profil.jpg' }).src;
+const PHOTO_ACCUEIL = (CONTENT.sections[0].photo || { src: 'images/fond/profil.jpg' }).src;
 
 function creer(tag, classe, texte) {
   const el = document.createElement(tag);
@@ -724,17 +724,78 @@ function mettreEnPage() {
   listerFrises();
   tracerRoute();
   dessinerSondes();
+  placerVestiges();
   if (reduit) image();
+}
+
+/* ---------- Grands fonds ---------- */
+
+const PROFONDEUR_MAX = 6000;
+
+// Ce qu'on croise en descendant, à sa vraie profondeur (en mètres) ; les textes sont dans langue.js
+const VESTIGES = [
+  ['cachalot', 2000, '0 0 220 80', '<path d="M14,40 Q14,22 46,20 L122,22 Q162,26 186,40 L208,26 L204,43 L210,60 L187,48 Q150,60 110,60 L48,60 Q14,58 14,40 Z"/><path d="M18,51 L62,54 M78,60 L88,71 L98,60"/><circle cx="50" cy="43" r="1.6"/>'],
+  ['sources', 2500, '0 0 140 110', '<path d="M4,108 L28,76 L36,42 L48,40 L54,78 L72,86 L82,54 L92,52 L100,88 L134,108"/><path d="M40,76 L44,56 M86,84 L88,68"/><path class="fumee" d="M42,36 q-7,-9 1,-17 q8,-8 0,-17 M87,48 q-6,-8 1,-15 q7,-7 0,-15"/>'],
+  ['titanic', 3800, '0 0 250 100', '<g transform="rotate(-3 125 60)"><path d="M12,58 L26,78 L206,78 L238,56 L158,56 L158,48 L62,48 L62,56 Z"/><path d="M76,48 L79,28 L90,28 L89,48 M101,48 L104,28 L115,28 L114,48 M126,48 L129,28 L140,28 L139,48 M210,56 L206,18 M40,57 L38,26"/><path d="M36,66 H196"/></g><path d="M2,92 Q40,84 80,90 T160,90 T248,88"/>'],
+];
+const NAUTILE = ['nautile', 6000, '0 0 150 80', '<path d="M34,26 h64 a15,15 0 0 1 0,30 h-64 a15,15 0 0 1 0,-30 Z"/><circle cx="100" cy="41" r="6"/><path d="M54,26 l6,-11 h22 l5,11 M19,41 h15 M13,32 v18 M44,56 v7 h48 v-7 M110,50 l13,9 l-5,6"/>'];
+
+function creerVestige([cle, metres, cadre, dessin]) {
+  const el = creer('div', 'vestige');
+  el.id = 'vestige-' + cle;
+  el.innerHTML = '<svg viewBox="' + cadre + '">' + dessin + '</svg>';
+  el.appendChild(creer('b', null, '−' + metres.toLocaleString(T.locale) + ' m'));
+  el.appendChild(creer('span', null, T.vestiges[cle]));
+  return el;
+}
+
+const fonds = document.getElementById('fonds');
+const vestiges = VESTIGES.map((vestige) => [vestige[1], fonds.appendChild(creerVestige(vestige))]);
+// Le Nautile attend au-dessus des rochers, tout en bas
+document.getElementById('fond-marin').appendChild(creerVestige(NAUTILE));
+
+// Échelle de la jauge : [défilement en px, profondeur en m], de la surface au fond.
+// Elle passe par chaque repère, qui est donc au milieu de l'écran quand la jauge affiche sa profondeur.
+let echelle = [[0, 0], [1, PROFONDEUR_MAX]];
+
+function placerVestiges() {
+  const course = Math.max(1, racine.scrollHeight - innerHeight);
+  // Les galeries horizontales occupent tout l'écran : un repère caché derrière est déplacé juste avant ou après
+  const galeries = [...document.querySelectorAll('.traversee')].map((el) => {
+    const haut = el.getBoundingClientRect().top + scrollY;
+    return [haut, haut + el.offsetHeight];
+  });
+  echelle = [[0, 0]];
+  vestiges.forEach(([metres, el]) => {
+    let milieu = (metres / PROFONDEUR_MAX) * course + innerHeight / 2;
+    galeries.forEach(([haut, bas]) => {
+      if (milieu > haut - innerHeight * 0.3 && milieu < bas + innerHeight * 0.3) {
+        milieu = milieu - haut < bas - milieu ? haut - innerHeight * 0.3 : bas + innerHeight * 0.3;
+      }
+    });
+    el.style.top = (milieu - el.offsetHeight / 2).toFixed(0) + 'px';
+    const defilement = limiter(milieu - innerHeight / 2, echelle[echelle.length - 1][0] + 1, course - 1);
+    echelle.push([defilement, metres]);
+  });
+  echelle.push([course, PROFONDEUR_MAX]);
+}
+
+// Profondeur affichée pour un défilement donné, par interpolation entre les repères
+function profondeurA(defilement) {
+  const i = Math.max(1, echelle.findIndex(([d]) => d >= defilement));
+  const [d0, m0] = echelle[i - 1];
+  const [d1, m1] = echelle[i];
+  return m0 + (m1 - m0) * limiter((defilement - d0) / (d1 - d0), 0, 1);
 }
 
 /* ---------- Boucle d'animation ---------- */
 
 // Profondeur affichée en haut à droite, avec le nom de la zone océanique
-const PROFONDEUR_MAX = 6000;
 const ZONES = [200, 1000, 4000, Infinity].map((limite, i) => [limite, T.zones[i]]);
 const jauge = { metres: document.getElementById('metres'), zone: document.getElementById('zone') };
 const boutonSurface = document.getElementById('surface');
 let derniereProfondeur = -1;
+let derniereEau = '';
 
 function limiter(v, min, max) { return Math.min(max, Math.max(min, v)); }
 
@@ -777,7 +838,11 @@ function image() {
   // Plus on descend, plus on s'enfonce dans les abysses
   const prof = limiter(scrollY / Math.max(1, racine.scrollHeight - vh), 0, 1);
   racine.style.setProperty('--prof', prof.toFixed(3));
-  const metres = Math.round((prof * PROFONDEUR_MAX) / 10) * 10;
+  // L'eau : du bleu nuit (10, 19, 48) au noir, atteint aux trois quarts de la descente
+  const clarte = 1 - limiter(prof / 0.75, 0, 1);
+  const eau = 'rgb(' + [10, 19, 48].map((c) => Math.round(c * clarte)).join(', ') + ')';
+  if (eau !== derniereEau) racine.style.setProperty('--eau', derniereEau = eau);
+  const metres = Math.round(profondeurA(scrollY) / 10) * 10;
   if (metres !== derniereProfondeur) {
     derniereProfondeur = metres;
     jauge.metres.textContent = metres ? '−' + metres.toLocaleString(T.locale) : '0';

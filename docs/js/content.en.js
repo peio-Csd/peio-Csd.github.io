@@ -4,7 +4,7 @@ const CONTENT_EN = {
   "sections": [
     {
       "titre": "My profile",
-      "photo": { "src": "images/profil.jpg", "alt": "Sunset over the ocean, in purple tones", "fondu": true },
+      "photo": { "src": "images/fond/profil.jpg", "alt": "Sunset over the ocean, in purple tones", "fondu": true },
       "blocs": [
         {
           "titre": "Who am I?",
@@ -17,11 +17,11 @@ const CONTENT_EN = {
           "liste": [
             {
               "texte": "Since September 2026 — Wind turbine project — INSA Rennes, in partnership with EDF: a project led by INSA Rennes with the support of Sopra Steria, bringing together the Mechanical Engineering and Electrical Engineering departments to build an educational model that raises awareness of cybersecurity in the energy sector",
-              "photo": { "src": "images/projet-eolienne.jpg", "alt": "Offshore wind turbines in the mist", "credit": "Andy Dingley · CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Barrow_Offshore_wind_turbines_NR.jpg" }
+              "photo": { "src": "images/projets/eolienne.jpg", "alt": "Offshore wind turbines in the mist", "credit": "Andy Dingley · CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Barrow_Offshore_wind_turbines_NR.jpg" }
             },
             {
               "texte": "Since May 2026 — Consulting — Primaval Bretagne: supporting the company's digital transformation by developing custom tools in the field of wealth management",
-              "photo": { "src": "images/logo-primaval.png", "alt": "Primaval logo", "logo": true, "fond": "sombre" }
+              "photo": { "src": "images/logos/primaval.png", "alt": "Primaval logo", "logo": true, "fond": "sombre" }
             }
           ]
         },
@@ -32,25 +32,25 @@ const CONTENT_EN = {
           "liste": [
             {
               "texte": "June – July 2026 — Intern — DXC Technology (La Défense): studied the conditions for deploying agentic AI (Claude Mythos, GPT 5.6), along with its dangers and cybersecurity challenges, to raise awareness within DXC's France cybersecurity division, with the support of major vendors such as Palo Alto Networks and Microsoft",
-              "photo": { "src": "images/logo-dxc.png", "alt": "DXC Technology logo", "logo": true }
+              "photo": { "src": "images/logos/dxc.png", "alt": "DXC Technology logo", "logo": true }
             },
             {
               "texte": "September 2025 – May 2026 — OMR research project: worked with 3 students and 2 faculty researchers on an AI that turns a sheet of music in JPG format into a format that can be edited in an application",
-              "photo": { "src": "images/projet-omr.jpg", "alt": "Brooklyn sheet music for trombone" }
+              "photo": { "src": "images/projets/omr.jpg", "alt": "Brooklyn sheet music for trombone" }
             },
             {
               "texte": "April 2026 — Cyberschool Rennes CTF (PNRB): 4th place out of about twenty teams, in a team of 5 students",
-              "photo": { "src": "images/logo-cyberschool.png", "alt": "Cyberschool logo", "logo": true }
+              "photo": { "src": "images/logos/cyberschool.png", "alt": "Cyberschool logo", "logo": true }
             },
             {
               "texte": "February 2023 — Intern — Au Pair Butrfly (Bidart): analysis of the marketing mix and customer journey",
-              "photo": { "src": "images/logo-butrfly.png", "alt": "Au Pair Butrfly logo", "logo": true }
+              "photo": { "src": "images/logos/butrfly.png", "alt": "Au Pair Butrfly logo", "logo": true }
             },
             {
               "texte": "December 2021 – October 2022 — Innovation competitions — ESTIA: French Tech Pays Basque Hackathon (October 2022): “Encouraging student housing with local residents”, first prize in the high school category; 24h de l'innovation (December 2021): team project for EDF, in charge of data management and search engine optimisation",
               "photo": [
-                { "src": "images/logo-estia.png", "alt": "ESTIA logo", "logo": true },
-                { "src": "images/logo-24h.png", "alt": "24h de l'innovation logo", "logo": true }
+                { "src": "images/logos/estia.png", "alt": "ESTIA logo", "logo": true },
+                { "src": "images/logos/24h.png", "alt": "24h de l'innovation logo", "logo": true }
               ]
             }
           ]
@@ -101,11 +101,11 @@ const CONTENT_EN = {
       "galerie": {
         "modele": "sauvetage",
         "photos": [
-          { "src": "images/sauvetage-1.jpg", "alt": "Run on the Grande Plage in Biarritz, Red Bull competition", "taille": "grande" },
-          { "src": "images/sauvetage-2.jpg", "alt": "Getting out of the water with a rescue board, local competition", "taille": "haute" },
-          { "src": "images/sauvetage-3.jpg", "alt": "Surfski in the waves, Red Bull competition" },
-          { "src": "images/sauvetage-4.jpg", "alt": "Riding a wave on a rescue board, Red Bull competition" },
-          { "src": "images/sauvetage-5.jpg", "alt": "Brittany surf contest" }
+          { "src": "images/sauvetage/course-biarritz.jpg", "alt": "Run on the Grande Plage in Biarritz, Red Bull competition", "taille": "grande" },
+          { "src": "images/sauvetage/sortie-planche.jpg", "alt": "Getting out of the water with a rescue board, local competition", "taille": "haute" },
+          { "src": "images/sauvetage/surfski.jpg", "alt": "Surfski in the waves, Red Bull competition" },
+          { "src": "images/sauvetage/vague-planche.jpg", "alt": "Riding a wave on a rescue board, Red Bull competition" },
+          { "src": "images/sauvetage/surf-bretagne.jpg", "alt": "Brittany surf contest" }
         ]
       },
       "blocs": [
@@ -129,10 +129,10 @@ const CONTENT_EN = {
           "galerie": {
             "modele": "musique",
             "photos": [
-              { "src": "images/musique-2.jpg", "alt": "INSA Rennes band 1" },
-              { "src": "images/musique-3.jpg", "alt": "Speech at an INSA Rennes band event" },
-              { "src": "images/musique-1.jpg", "alt": "INSA Rennes band 2" },
-              { "src": "images/musique-4.jpg", "alt": "National trombone quartet competition, rising talent category" }
+              { "src": "images/musique/fanfare-1.jpg", "alt": "INSA Rennes band 1" },
+              { "src": "images/musique/discours.jpg", "alt": "Speech at an INSA Rennes band event" },
+              { "src": "images/musique/fanfare-2.jpg", "alt": "INSA Rennes band 2" },
+              { "src": "images/musique/quatuor.jpg", "alt": "National trombone quartet competition, rising talent category" }
             ]
           },
           "cadre": true,

@@ -4,7 +4,7 @@ const CONTENT_FR = {
   "sections": [
     {
       "titre": "Mon profil",
-      "photo": { "src": "images/profil.jpg", "alt": "Coucher de soleil sur l'océan, tons violets", "fondu": true },
+      "photo": { "src": "images/fond/profil.jpg", "alt": "Coucher de soleil sur l'océan, tons violets", "fondu": true },
       "blocs": [
         {
           "titre": "Qui suis-je ?",
@@ -17,11 +17,11 @@ const CONTENT_FR = {
           "liste": [
             {
               "texte": "Depuis septembre 2026 — Projet éolienne — INSA Rennes, en partenariat avec EDF : projet mené par l'INSA de Rennes avec le soutien de Sopra Steria, réunissant les départements Génie mécanique et Génie électrique, pour réaliser une maquette pédagogique sensibilisant à la cybersécurité dans le monde de l'énergie",
-              "photo": { "src": "images/projet-eolienne.jpg", "alt": "Éoliennes en mer dans la brume", "credit": "Andy Dingley · CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Barrow_Offshore_wind_turbines_NR.jpg" }
+              "photo": { "src": "images/projets/eolienne.jpg", "alt": "Éoliennes en mer dans la brume", "credit": "Andy Dingley · CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Barrow_Offshore_wind_turbines_NR.jpg" }
             },
             {
               "texte": "Depuis mai 2026 — Conseil — Primaval Bretagne : accompagnement de la transition numérique de l'entreprise par le développement d'outils sur mesure dans le domaine de la gestion de patrimoine",
-              "photo": { "src": "images/logo-primaval.png", "alt": "Logo Primaval", "logo": true, "fond": "sombre" }
+              "photo": { "src": "images/logos/primaval.png", "alt": "Logo Primaval", "logo": true, "fond": "sombre" }
             }
           ]
         },
@@ -32,25 +32,25 @@ const CONTENT_FR = {
           "liste": [
             {
               "texte": "Juin – juillet 2026 — Stagiaire — DXC Technology (La Défense) : étude des conditions de déploiement de l'IA agentique (Claude Mythos, GPT 5.6) et de ses dangers et enjeux en cybersécurité, afin de sensibiliser le pôle cybersécurité France de DXC, avec le soutien d'éditeurs majeurs comme Palo Alto Networks et Microsoft",
-              "photo": { "src": "images/logo-dxc.png", "alt": "Logo DXC Technology", "logo": true }
+              "photo": { "src": "images/logos/dxc.png", "alt": "Logo DXC Technology", "logo": true }
             },
             {
               "texte": "Septembre 2025 – mai 2026 — Projet de recherche OMR : travail avec 3 étudiants et 2 enseignants-chercheurs sur une IA qui transforme une partition de musique au format JPG en un format éditable dans une application",
-              "photo": { "src": "images/projet-omr.jpg", "alt": "Partition de Brooklyn pour trombone" }
+              "photo": { "src": "images/projets/omr.jpg", "alt": "Partition de Brooklyn pour trombone" }
             },
             {
               "texte": "Avril 2026 — CTF de la Cyberschool Rennes (PNRB) : 4e place sur une vingtaine d'équipes, avec une équipe de 5 étudiants",
-              "photo": { "src": "images/logo-cyberschool.png", "alt": "Logo de la Cyberschool", "logo": true }
+              "photo": { "src": "images/logos/cyberschool.png", "alt": "Logo de la Cyberschool", "logo": true }
             },
             {
               "texte": "Février 2023 — Stagiaire — Au Pair Butrfly (Bidart) : analyse du mix marketing et du parcours client",
-              "photo": { "src": "images/logo-butrfly.png", "alt": "Logo Au Pair Butrfly", "logo": true }
+              "photo": { "src": "images/logos/butrfly.png", "alt": "Logo Au Pair Butrfly", "logo": true }
             },
             {
               "texte": "Décembre 2021 – octobre 2022 — Concours d'innovation — ESTIA : Hackathon French Tech Pays Basque (octobre 2022) : « Favoriser le logement étudiant chez l'habitant », premier prix catégorie lycées ; 24h de l'innovation (décembre 2021) : projet en équipe pour EDF, en charge de la gestion des données et du référencement",
               "photo": [
-                { "src": "images/logo-estia.png", "alt": "Logo ESTIA", "logo": true },
-                { "src": "images/logo-24h.png", "alt": "Logo des 24h de l'innovation", "logo": true }
+                { "src": "images/logos/estia.png", "alt": "Logo ESTIA", "logo": true },
+                { "src": "images/logos/24h.png", "alt": "Logo des 24h de l'innovation", "logo": true }
               ]
             }
           ]
@@ -101,11 +101,11 @@ const CONTENT_FR = {
       "galerie": {
         "modele": "sauvetage",
         "photos": [
-          { "src": "images/sauvetage-1.jpg", "alt": "Course sur la Grande Plage de Biarritz, compétition Red Bull", "taille": "grande" },
-          { "src": "images/sauvetage-2.jpg", "alt": "Sortie de l'eau avec une planche de sauvetage, compétition locale", "taille": "haute" },
-          { "src": "images/sauvetage-3.jpg", "alt": "Surfski dans les vagues, compétition Red Bull" },
-          { "src": "images/sauvetage-4.jpg", "alt": "Vague surfée en planche de sauvetage, compétition Red Bull" },
-          { "src": "images/sauvetage-5.jpg", "alt": "Compétition de surf en Bretagne" }
+          { "src": "images/sauvetage/course-biarritz.jpg", "alt": "Course sur la Grande Plage de Biarritz, compétition Red Bull", "taille": "grande" },
+          { "src": "images/sauvetage/sortie-planche.jpg", "alt": "Sortie de l'eau avec une planche de sauvetage, compétition locale", "taille": "haute" },
+          { "src": "images/sauvetage/surfski.jpg", "alt": "Surfski dans les vagues, compétition Red Bull" },
+          { "src": "images/sauvetage/vague-planche.jpg", "alt": "Vague surfée en planche de sauvetage, compétition Red Bull" },
+          { "src": "images/sauvetage/surf-bretagne.jpg", "alt": "Compétition de surf en Bretagne" }
         ]
       },
       "blocs": [
@@ -129,10 +129,10 @@ const CONTENT_FR = {
           "galerie": {
             "modele": "musique",
             "photos": [
-              { "src": "images/musique-2.jpg", "alt": "Fanfare de l'INSA Rennes 1" },
-              { "src": "images/musique-3.jpg", "alt": "Discours lors d'un évènement de la Fanfare de l'INSA Rennes" },
-              { "src": "images/musique-1.jpg", "alt": "Fanfare de l'INSA Rennes 2" },
-              { "src": "images/musique-4.jpg", "alt": "Concours National de quatuor de trombone catégorie espoir" }
+              { "src": "images/musique/fanfare-1.jpg", "alt": "Fanfare de l'INSA Rennes 1" },
+              { "src": "images/musique/discours.jpg", "alt": "Discours lors d'un évènement de la Fanfare de l'INSA Rennes" },
+              { "src": "images/musique/fanfare-2.jpg", "alt": "Fanfare de l'INSA Rennes 2" },
+              { "src": "images/musique/quatuor.jpg", "alt": "Concours National de quatuor de trombone catégorie espoir" }
             ]
           },
           "cadre": true,

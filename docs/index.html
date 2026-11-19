@@ -3,20 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Politique de sécurité : le site ne charge que ses propres fichiers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
   <title>Alexandre CAUSSADE</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Fond des abysses : rayons de lumière près de la surface, neige marine et lueurs en profondeur -->
-  <div class="abysses" aria-hidden="true">
-    <span class="rayons"></span>
-    <span class="neige"></span>
-    <span class="neige lointaine"></span>
-    <span class="lueurs"></span>
-  </div>
+  <!-- Grands fonds : repères placés par main.js à leur vraie profondeur -->
+  <div class="fonds" id="fonds" aria-hidden="true"></div>
   <nav class="langues" aria-label="Langue" data-label="choixLangue">
     <a href="?lang=fr" lang="fr">FR</a>
     <a href="?lang=en" lang="en">EN</a>
@@ -73,6 +67,13 @@
     <p class="fin" data-texte="finJournal">— Fin du journal de bord —</p>
     <a href="#accueil" data-texte="retourPort">Retour au port ↑</a>
     <p>© <span id="annee"></span> Alexandre CAUSSADE</p>
+    <!-- Le fond de l'océan : rochers, et le sous-marin placé par main.js -->
+    <div class="fond-marin" id="fond-marin" aria-hidden="true">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path class="roche" d="M0,120 L0,84 Q40,64 90,80 L128,52 L172,47 L202,84 Q262,97 322,86 L352,61 L402,57 L432,90 Q522,102 602,88 L642,67 L692,71 L722,94 Q822,105 902,86 L932,59 L982,55 L1012,88 Q1102,100 1200,82 L1200,120 Z"/>
+        <path class="roche" d="M236,120 Q240,100 262,100 Q282,101 286,120 Z M760,120 Q766,104 790,103 Q812,105 816,120 Z M1090,120 Q1094,106 1112,106 Q1128,107 1132,120 Z"/>
+      </svg>
+    </div>
   </footer>
 
   <script src="js/content.js"></script>

@@ -1,3 +1,85 @@
+/* Polices hébergées sur le site (docs/fonts/, licence SIL OFL) : aucun appel à un serveur tiers */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/dm-mono-normal-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/dm-mono-normal-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../fonts/dm-mono-normal-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../fonts/dm-mono-normal-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url(../fonts/fraunces-italic-300-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url(../fonts/fraunces-italic-300-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url(../fonts/fraunces-normal-300-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url(../fonts/fraunces-normal-300-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(../fonts/nunito-normal-400-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(../fonts/nunito-normal-400-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* Design « Carnet de bord » : une carte marine de nuit.
    Lignes de sonde, route tracée au fil du défilement, rose des vents. */
 :root {
@@ -11,9 +93,12 @@
   --rose: #ef93ab;
   --voie: 120px;             /* largeur du couloir de la route, à gauche */
   --p: 0;
+  --eau: var(--nuit);        /* couleur de l'eau à la profondeur atteinte (réglée par main.js) */
   --prof: 0;                 /* 0 à la surface, 1 au fond de la page */
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --serif: 'Cormorant Garamond', Georgia, serif;
+  /* Titres aux courbes souples, texte arrondi, instruments en chasse fixe */
+  --mono: 'DM Mono', ui-monospace, monospace;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Nunito', system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -21,12 +106,13 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-family: var(--sans);
   font-size: 1rem;
   line-height: 1.7;
   color: var(--texte);
-  /* L'eau s'assombrit jusqu'au noir des abysses, tout au long de la page */
-  background: linear-gradient(to bottom, var(--nuit) 0, var(--nuit) 6%, #071029 28%, #040a1d 52%, #02050f 78%, #000105 100%);
+  /* L'eau est une couleur unie, sans dégradé : main.js l'assombrit (--eau) au fil de la descente,
+     du bleu nuit de la surface au noir des abysses */
+  background: var(--eau);
   overflow-x: clip;
 }
 
@@ -47,58 +133,27 @@ body {
 .langues a:hover { color: var(--texte); }
 .langues a[aria-current] { color: var(--nuit); background: var(--laiton); }
 
-/* ---------- Abysses : calque fixe derrière le contenu ---------- */
-.abysses { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-.abysses > span { position: absolute; }
-/* Rayons de lumière venus de la surface, qui s'éteignent en descendant */
-.abysses .rayons {
-  inset: -10% -30% 25%;
-  background: repeating-linear-gradient(100deg, transparent 0 70px, rgba(170, 200, 255, 0.06) 70px 110px, transparent 110px 200px);
-  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
-  mask-image: linear-gradient(to bottom, #000, transparent);
-  filter: blur(8px);
-  opacity: max(0, 1 - var(--prof) * 2.5);
-  transform-origin: top;
-  animation: ondule 14s ease-in-out infinite alternate;
-}
-@keyframes ondule { to { transform: skewX(7deg) translateX(-60px); } }
-/* Neige marine : particules qui tombent lentement, de plus en plus visibles */
-.abysses .neige {
-  inset: -520px 0 0;
-  background-image:
-    radial-gradient(circle at 30px 40px, rgba(220, 230, 255, 0.55) 1.2px, transparent 2px),
-    radial-gradient(circle at 150px 110px, rgba(220, 230, 255, 0.4) 1px, transparent 1.6px),
-    radial-gradient(circle at 90px 200px, rgba(220, 230, 255, 0.5) 1.5px, transparent 2.2px),
-    radial-gradient(circle at 220px 60px, rgba(220, 230, 255, 0.35) 0.8px, transparent 1.4px),
-    radial-gradient(circle at 200px 230px, rgba(220, 230, 255, 0.45) 1.1px, transparent 1.8px);
-  background-size: 260px 260px;
-  opacity: calc(var(--prof) * 1.3 - 0.1);
-  animation: neige 34s linear infinite;
-}
-.abysses .neige.lointaine { background-size: 170px 170px; inset: -340px 0 0; opacity: calc(var(--prof) * 0.9 - 0.15); filter: blur(0.6px); animation-duration: 60s; animation-name: neige-loin; }
-@keyframes neige { to { transform: translateY(520px); } }
-@keyframes neige-loin { to { transform: translateY(340px); } }
-/* Lueurs bioluminescentes, seulement dans les grands fonds */
-.abysses .lueurs {
-  inset: 0;
-  background:
-    radial-gradient(circle at 12% 30%, rgba(110, 230, 255, 0.5) 0 2px, transparent 7px),
-    radial-gradient(circle at 84% 22%, rgba(239, 147, 171, 0.5) 0 2px, transparent 7px),
-    radial-gradient(circle at 70% 76%, rgba(110, 230, 255, 0.45) 0 1.5px, transparent 6px),
-    radial-gradient(circle at 28% 84%, rgba(126, 224, 161, 0.4) 0 1.5px, transparent 6px),
-    radial-gradient(circle at 92% 58%, rgba(110, 230, 255, 0.4) 0 1.5px, transparent 6px);
-  opacity: calc(var(--prof) * 2.4 - 1.2);
-  animation: luit 5s ease-in-out infinite alternate;
-}
-@keyframes luit { from { filter: brightness(0.4); } to { filter: brightness(1.3); } }
-/* Les bords de l'écran s'assombrissent avec la profondeur */
-.abysses::after {
-  content: '';
+/* ---------- Grands fonds : repères posés à leur vraie profondeur, derrière le contenu ---------- */
+.fonds { position: absolute; top: 0; left: 0; width: 100%; height: 0; z-index: -1; pointer-events: none; }
+.vestige {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.75));
-  opacity: var(--prof);
+  right: clamp(10px, 3vw, 56px);
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  width: clamp(120px, 15vw, 210px);
+  text-align: right;
 }
+.vestige svg { width: 100%; height: auto; margin-bottom: 6px; overflow: visible; }
+.vestige svg, .fond-marin svg { fill: none; stroke: var(--discret); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.6; }
+.vestige .fumee { stroke-dasharray: 2 5; }
+.vestige b { font: 500 0.72rem var(--mono); letter-spacing: 0.14em; color: var(--laiton); }
+.vestige span { font: 0.7rem/1.5 var(--mono); letter-spacing: 0.04em; color: var(--discret); }
+/* Le fond rocheux, tout en bas de la page */
+.fond-marin { position: relative; margin: 70px -16px 0; }
+.fond-marin > svg { display: block; width: 100%; height: clamp(70px, 9vw, 120px); }
+.fond-marin .roche { fill: #06090f; vector-effect: non-scaling-stroke; }
+.fond-marin .vestige { bottom: 78%; }
 
 /* Profondeur, en haut à droite */
 .profondeur {
@@ -196,7 +251,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to bottom, transparent 55%, var(--nuit));
+  background: linear-gradient(to bottom, transparent 66%, var(--eau));
 }
 .quadrillage {
   position: absolute;
@@ -256,7 +311,8 @@ h1 {
   letter-spacing: 0.02em;
   animation: resserre 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
-h1 em { display: block; font-weight: 500; }
+/* Le nom s'écrit dans la même police que le prénom, sans italique */
+h1 em { display: block; font-style: normal; }
 @keyframes resserre {
   from { opacity: 0; letter-spacing: 0.4em; filter: blur(8px); }
   to { opacity: 1; letter-spacing: 0.02em; filter: none; }
@@ -264,9 +320,8 @@ h1 em { display: block; font-weight: 500; }
 #accroche {
   max-width: 30ch;
   margin: 1.2em 0 0;
-  font-family: var(--serif);
-  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
-  font-style: italic;
+  font-family: var(--sans);
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.88);
   animation: apparait 1.4s 0.9s ease both;
@@ -339,11 +394,12 @@ h1 em { display: block; font-weight: 500; }
 .lecteur { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 #console p { margin: 0; }
 #console .systeme { color: var(--discret); }
-#console .sortie { max-width: 72ch; }
+/* Le texte déchiffré se lit dans la police du texte courant ; ce qui reste chiffré garde la chasse fixe */
+#console .sortie { max-width: 72ch; font-family: var(--sans); font-size: 1.06em; line-height: 1.65; }
 #console .espace { margin-top: 14px; }
 #console .valide { margin-top: 14px; color: #7ee0a1; }
 /* Caractères encore chiffrés */
-#console .chiffre { color: rgba(220, 184, 120, 0.6); }
+#console .chiffre { font-family: var(--mono); font-size: 0.94em; color: rgba(220, 184, 120, 0.6); }
 .invite {
   position: absolute;
   bottom: 70px;
@@ -423,14 +479,14 @@ h1 em { display: block; font-weight: 500; }
   filter: drop-shadow(0 0 8px rgba(220, 184, 120, 0.6));
 }
 .ancre path, .ancre circle { fill: none; stroke: var(--laiton); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.ancre circle { fill: var(--nuit); }
+.ancre circle { fill: var(--eau); }
 .escale-repere {
   position: absolute;
   width: 13px;
   height: 13px;
   border: 1.5px solid var(--laiton);
   border-radius: 50%;
-  background: var(--nuit);
+  background: var(--eau);
   transform: translate(-50%, -50%);
 }
 .escale-repere::after {
@@ -497,7 +553,7 @@ h2 {
   color: var(--discret);
 }
 .bloc p { margin: 0 0 16px; }
-.bloc.intro p { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.95rem); line-height: 1.45; }
+.bloc.intro p { font-family: var(--sans); font-size: clamp(1.4rem, 2.6vw, 1.95rem); line-height: 1.45; }
 .bloc ul { margin: 0; padding-left: 20px; }
 
 /* Listes datées : lignes du journal de bord */
@@ -989,8 +1045,8 @@ a:hover { color: var(--laiton); }
   height: 13px;
   border: 1.5px solid var(--laiton);
   border-radius: 50%;
-  background: var(--nuit);
-  box-shadow: inset 0 0 0 3px var(--nuit);
+  background: var(--eau);
+  box-shadow: inset 0 0 0 3px var(--eau);
   transition: background 0.6s 0.5s;
 }
 .frise .fiche:nth-of-type(odd)::before { right: -52.5px; }
@@ -1115,7 +1171,7 @@ a:hover { color: var(--laiton); }
 
 /* ---------- Pied de page ---------- */
 footer {
-  padding: 40px 16px 110px;
+  padding: 40px 16px 0;
   text-align: center;
   font-family: var(--mono);
   font-size: 0.78rem;
@@ -1129,6 +1185,9 @@ footer .fin { font-family: var(--serif); font-size: 1.6rem; font-style: italic; 
 .detail, .detail > div { display: contents; }
 
 @media (max-width: 980px) {
+  /* Petit écran : le repère passe derrière les textes, on ne garde que le dessin et sa profondeur */
+  .vestige { width: 104px; opacity: 0.4; }
+  .vestige span { display: none; }
   #accueil { height: auto; min-height: 100svh; }
   .accueil-grille { grid-template-columns: 1fr; padding: 72px 16px 110px; }
   .terminal { min-height: 0; }
