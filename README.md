@@ -19,6 +19,7 @@ portfolio/
     ├── documents/      # CV à télécharger
     ├── images/
     │   ├── fond/       # Photo de l'accueil (2560×853)
+    │   ├── icone/      # Icône de l'onglet (favicon), déclarée dans index.html
     │   ├── logos/      # Logos des projets et expériences
     │   ├── projets/    # Photos des projets
     │   ├── sauvetage/  # Galerie Sport
@@ -53,7 +54,7 @@ Chaque section contient des **blocs**. Un bloc accepte :
 | `liste` | Liste à puces (texte, ou lien : `{ "texte": "GitHub", "lien": "https://..." }`) |
 | `lien`  | Lien « Voir le projet »                 |
 | `cadre` | `true` pour l'afficher dans un cadre    |
-| `affichage` | `"cases"` (une fiche par élément « date — intitulé : description » ; pour regrouper plusieurs volets d'une même expérience : « date — intitulé : Nom : détail ; Nom : détail »), `"effervescence"` (mêmes éléments que `cases`, une fiche à la fois : un clic sur la fiche ou sur le bouton la change en bulles qui remontent, et la suivante se forme à sa place ; le texte du bouton se règle avec `"consigne"` sur le bloc), `"frise"` (frise chronologique en quinconce, utilisée pour la formation) ou `"bulles"` (une bulle par élément « titre : contenu », les énumérations courtes deviennent des pastilles). Un élément de `cases`/`effervescence`/`frise` peut aussi être `{ "texte": "...", "photo": { "src": "images/logos/x.png", "alt": "...", "logo": true } }` : l'image s'affiche dans une plaque au-dessus du texte. Avec `"logo": true` elle est posée sur fond clair sans être recadrée (ajoute `"fond": "sombre"` pour un logo blanc) ; sinon c'est une photo qui remplit le cadre (avec `"credit"` et `"source"` si elle vient d'ailleurs). `photo` peut être une liste pour afficher plusieurs logos. |
+| `affichage` | `"cases"` (une fiche par élément « date — intitulé : description » ; pour regrouper plusieurs volets d'une même expérience : « date — intitulé : Nom : détail ; Nom : détail »), `"effervescence"` (mêmes éléments que `cases`, une fiche à la fois : un clic sur la fiche ou sur le bouton envoie une onde de sonar depuis le point cliqué, qui dévoile la suivante ; le texte du bouton se règle avec `"consigne"` sur le bloc), `"frise"` (frise chronologique en quinconce, utilisée pour la formation) ou `"bulles"` (une bulle par élément « titre : contenu », les énumérations courtes deviennent des pastilles). Un élément de `cases`/`effervescence`/`frise` peut aussi être `{ "texte": "...", "photo": { "src": "images/logos/x.png", "alt": "...", "logo": true } }` : l'image s'affiche dans une plaque au-dessus du texte. Avec `"logo": true` elle est posée sur fond clair sans être recadrée (ajoute `"fond": "sombre"` pour un logo blanc) ; sinon c'est une photo qui remplit le cadre (avec `"credit"` et `"source"` si elle vient d'ailleurs). `photo` peut être une liste pour afficher plusieurs logos. |
 | `photo` | Photo pleine largeur affichée juste avant : `{ "src": "images/x.jpg", "alt": "..." }` (marche aussi sur une section) |
 | `galerie` | Photos affichées juste avant : `{ "modele": "musique", "photos": [{ "src": ..., "alt": ... }] }`. Sur une section, elles défilent à l'horizontale ; sur un bloc, elles forment une mosaïque (disposition du modèle `musique` dans `css/style.css`). |
 | `rupture` | `true` sur une section pour afficher un sonar animé juste avant |

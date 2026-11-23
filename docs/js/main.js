@@ -305,8 +305,7 @@ function creerCases(liste) {
   return div;
 }
 
-// Projets, expériences : une fiche à la fois ; au clic, elle se change en bulles
-// qui remontent et la suivante se forme à sa place
+// Projets, expériences : une fiche à la fois ; au clic, elle laisse place à la suivante
 // Formation : frise chronologique de part et d'autre d'un axe qui se trace au défilement
 function creerDefile(bloc, mode) {
   const div = creer('div', 'defile ' + mode);
@@ -345,10 +344,11 @@ function rendreCliquable(div, consigne) {
   div.appendChild(commandes);
 
   let index = 0;
-  function aller(nouveau) {
+  // point : endroit du clic dans l'écran (null pour les boutons), d'où part l'onde du sonar
+  function aller(nouveau, point = null) {
     const ancien = index;
     index = (nouveau + fiches.length) % fiches.length;
-    placer(div, fiches, index, ancien);
+    placer(div, fiches, index, ancien, point);
     retour.hidden = index === 0;
     suivant.textContent = index === fiches.length - 1 ? T.premier : consigne;
     suivant.classList.add('deja');
@@ -356,13 +356,13 @@ function rendreCliquable(div, consigne) {
   retour.addEventListener('click', () => aller(index - 1));
   suivant.addEventListener('click', () => aller(index + 1));
   fiches.forEach((fiche) => fiche.addEventListener('click', (e) => {
-    if (!e.target.closest('a')) aller(index + 1);
+    if (!e.target.closest('a')) aller(index + 1, { x: e.clientX, y: e.clientY });
   }));
   placer(div, fiches, 0);
 }
 
-// Affiche la fiche active ; l'ancienne se dissout en bulles, la nouvelle se forme
-function placer(div, fiches, index, ancien) {
+// Affiche la fiche active ; une onde de sonar part du clic et dévoile la nouvelle fiche
+function placer(div, fiches, index, ancien, point) {
   fiches.forEach((fiche, i) => {
     fiche.classList.remove('dissout', 'forme');
     fiche.classList.toggle('visible', i === index);
@@ -370,13 +370,40 @@ function placer(div, fiches, index, ancien) {
   });
   if (!reduit && ancien !== undefined && ancien !== index) {
     void div.offsetWidth; // relance les animations si on clique vite
-    enBulles(fiches[ancien]);
+    sonar(fiches[index], div, point);
     fiches[ancien].classList.add('dissout');
     fiches[index].classList.add('forme');
   }
   const n = fiches.length;
   div.querySelector('.numero').textContent = String(index + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
   div.style.setProperty('--avance', index / Math.max(1, n - 1));
+}
+
+/* ---------- Transition sonar entre fiches ---------- */
+
+// La nouvelle fiche apparaît dans un cercle qui s'élargit depuis le point cliqué
+// (le centre pour les boutons), suivi de deux anneaux dorés
+function sonar(nouvelle, div, point) {
+  const r = nouvelle.getBoundingClientRect();
+  const p = point || { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  const x = p.x - r.left;
+  const y = p.y - r.top;
+  const rayon = Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y));
+  nouvelle.style.setProperty('--x', x + 'px');
+  nouvelle.style.setProperty('--y', y + 'px');
+  nouvelle.style.setProperty('--r', rayon + 'px');
+  const ecran = div.querySelector('.ecran');
+  const e = ecran.getBoundingClientRect();
+  [0, 0.18].forEach((delai) => {
+    const onde = creer('span', 'onde-sonar');
+    onde.setAttribute('aria-hidden', 'true');
+    onde.style.left = p.x - e.left + 'px';
+    onde.style.top = p.y - e.top + 'px';
+    onde.style.setProperty('--r', rayon + 'px');
+    onde.style.animationDelay = delai + 's';
+    onde.addEventListener('animationend', () => onde.remove());
+    ecran.appendChild(onde);
+  });
 }
 
 /* ---------- Bulles d'air ---------- */
@@ -398,17 +425,6 @@ function lacherBulles(x, y, nombre, dispersion, hauteur, { delaiMax = 0.6, fixe 
     bulle.style.setProperty('--duree', 1.4 + Math.random() * 1.4 + 's');
     bulle.addEventListener('animationend', () => bulle.remove());
     document.body.appendChild(bulle);
-  }
-}
-
-// Toute la fiche se change en bulles : on en sème sur sa surface, le bas part en premier
-function enBulles(el) {
-  const r = el.getBoundingClientRect();
-  const nombre = Math.min(220, Math.round((r.width * r.height) / 1500));
-  for (let k = 0; k < nombre; k++) {
-    const y = r.top + Math.random() * r.height;
-    const retard = 0.05 + ((r.bottom - y) / r.height) * 0.3;
-    lacherBulles(r.left + Math.random() * r.width, y, 1, 0, 180 + Math.random() * 300, { delaiMax: retard });
   }
 }
 
