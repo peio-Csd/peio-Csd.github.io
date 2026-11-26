@@ -1,0 +1,273 @@
+/* Page 404 « Hors des cartes » : feuille autonome pour ne pas charger tout le site.
+   Mêmes polices et couleurs que style.css. Chemins absolus : la page s'affiche à toute adresse. */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/dm-mono-normal-400-latin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/dm-mono-normal-500-latin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url(/fonts/fraunces-normal-300-600-latin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url(/fonts/fraunces-italic-300-600-latin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/fonts/nunito-normal-400-600-latin.woff2) format('woff2');
+}
+
+:root {
+  --nuit: #0a1330;
+  --nuit-2: #0f1a3d;
+  --texte: #e7ebf5;
+  --discret: #8d9bc0;
+  --ligne: rgba(150, 185, 255, 0.16);
+  --laiton: #dcb878;
+  --rose: #ef93ab;
+  --mono: 'DM Mono', ui-monospace, monospace;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Nunito', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+body {
+  position: relative;
+  min-height: 100svh;
+  margin: 0;
+  overflow-x: clip;
+  font-family: var(--sans);
+  line-height: 1.7;
+  color: var(--texte);
+  background: radial-gradient(ellipse at 65% 45%, var(--nuit-2), var(--nuit) 70%);
+  background-color: var(--nuit);
+}
+
+/* ---------- Habillage repris de l'accueil ---------- */
+.langues {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  z-index: 30;
+  display: flex;
+  transform: translateX(-50%);
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  background: rgba(10, 19, 48, 0.7);
+  font: 500 0.72rem var(--mono);
+}
+.langues a { padding: 6px 12px; border-radius: 999px; color: var(--discret); text-decoration: none; }
+.langues a:hover { color: var(--texte); }
+.langues a[aria-current] { color: var(--nuit); background: var(--laiton); }
+
+.quadrillage {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 120px);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+  animation: apparait 2s ease both;
+}
+.coin {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  animation: apparait 1.2s 1s ease both;
+}
+.coin.hg { top: 24px; left: 24px; }
+.coin.bd { bottom: 24px; right: 24px; }
+
+@keyframes apparait { from { opacity: 0; } to { opacity: 1; } }
+@keyframes monte { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Mise en page ---------- */
+.erreur {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 80px);
+  width: min(1320px, 100%);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 96px clamp(16px, 5vw, 72px) 80px;
+}
+
+.surtitre {
+  margin: 0 0 1.2em;
+  font: 500 0.74rem var(--mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--laiton);
+  animation: monte 1s 0.2s ease both;
+}
+h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  animation: resserre 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes resserre {
+  from { opacity: 0; letter-spacing: 0.35em; filter: blur(8px); }
+  to { opacity: 1; letter-spacing: 0.02em; filter: none; }
+}
+.message {
+  max-width: 34ch;
+  margin: 1.1em 0 0;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  animation: monte 1.2s 0.7s ease both;
+}
+
+/* Relevé façon ligne de sonde */
+.releve {
+  display: grid;
+  gap: 2px;
+  max-width: 440px;
+  margin: 2em 0 2.2em;
+  padding: 14px 16px;
+  border: 1px solid var(--ligne);
+  border-left: 2px solid var(--laiton);
+  border-radius: 4px;
+  background: rgba(10, 19, 48, 0.6);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  animation: monte 1.2s 1s ease both;
+}
+.releve div { display: flex; gap: 12px; min-width: 0; }
+.releve dt {
+  flex: 0 0 11ch;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--discret);
+}
+.releve dd {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--texte);
+  font-variant-numeric: tabular-nums;
+}
+#destination { color: var(--rose); }
+#cap { color: var(--laiton); }
+
+.bouton {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid rgba(220, 184, 120, 0.6);
+  border-radius: 999px;
+  font: 500 0.76rem var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--laiton);
+  background: rgba(10, 19, 48, 0.8);
+  transition: color 0.3s, background-color 0.3s;
+  animation: monte 1.2s 1.3s ease both;
+}
+.bouton:hover, .bouton:focus-visible { color: var(--nuit); background-color: var(--laiton); }
+.bouton:focus-visible, .langues a:focus-visible { outline: 2px solid var(--laiton); outline-offset: 3px; }
+
+/* ---------- La carte déchirée ---------- */
+.carte {
+  margin: 0;
+  animation: apparait 1.6s 0.3s ease both;
+}
+.carte svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.papier { fill: var(--nuit-2); }
+.grille path { fill: none; stroke: rgba(150, 185, 255, 0.07); stroke-width: 1; }
+.isobathes path { fill: none; stroke: rgba(150, 185, 255, 0.16); stroke-width: 1; stroke-dasharray: 2 5; }
+.isobathes path:nth-child(2n) { stroke: rgba(220, 184, 120, 0.14); }
+.terre { fill: url(#hachures); stroke: var(--discret); stroke-width: 1.2; stroke-linejoin: round; }
+.hachure { stroke: rgba(141, 155, 192, 0.35); stroke-width: 1; }
+.sondes text { font: 10px var(--mono); fill: rgba(150, 185, 255, 0.45); }
+
+.port circle:first-child { fill: var(--nuit); stroke: var(--laiton); stroke-width: 1.2; }
+.port path, .port circle + path + circle { fill: none; stroke: var(--laiton); stroke-width: 1.4; stroke-linecap: round; }
+.port text { font: 500 9px var(--mono); letter-spacing: 0.08em; fill: var(--laiton); }
+
+.route { fill: none; stroke: var(--laiton); stroke-width: 2; stroke-dasharray: 2 7; stroke-linecap: round; }
+.trace { fill: none; stroke: #fff; stroke-width: 10; stroke-dasharray: 1; stroke-dashoffset: 1; animation: trace 2.6s 0.8s cubic-bezier(0.5, 0, 0.3, 1) forwards; }
+@keyframes trace { to { stroke-dashoffset: 0; } }
+
+.rose .anneau { fill: rgba(10, 19, 48, 0.75); stroke: var(--ligne); }
+.rose .anneau.fin { fill: none; stroke: var(--laiton); stroke-dasharray: 1 3.2; opacity: 0.6; }
+.rose .graduations path { stroke: var(--discret); stroke-width: 1; }
+.rose .aiguille { transform: rotate(var(--cap, 44deg)); }
+.rose .branche { fill: none; stroke: var(--discret); stroke-width: 0.8; }
+.rose .nord { fill: var(--rose); }
+.rose text { font: 500 8px var(--mono); fill: var(--laiton); }
+.rose .pivot { fill: var(--laiton); }
+
+.bord { fill: none; stroke: var(--laiton); stroke-width: 1.2; stroke-linejoin: round; opacity: 0.55; }
+.cadre { fill: none; stroke: var(--ligne); stroke-width: 1; }
+
+/* Sonar sans écho, au bout de la route */
+.perdu .point { fill: var(--rose); opacity: 0; animation: apparait 0.4s 3.3s ease forwards, clignote 1.6s 3.7s ease-in-out infinite; }
+.perdu .onde { fill: none; stroke: var(--rose); stroke-width: 1.2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: ping 2.6s 3.4s ease-out infinite; }
+.perdu .onde.deux { animation-delay: 4.7s; }
+@keyframes ping { from { opacity: 0.9; transform: scale(1); } to { opacity: 0; transform: scale(7); } }
+@keyframes clignote { 50% { opacity: 0.35; } }
+
+/* Terra incognita */
+.incognita { animation: apparait 2s 1.8s ease both; }
+.latin { font: italic 300 34px var(--serif); fill: rgba(231, 235, 245, 0.75); letter-spacing: 0.02em; }
+.devise { font: 500 9px var(--mono); letter-spacing: 0.32em; fill: var(--laiton); opacity: 0.8; }
+.vagues path { fill: none; stroke: rgba(150, 185, 255, 0.25); stroke-width: 1; stroke-linecap: round; }
+.serpent { animation: ondule 5s ease-in-out infinite; }
+.serpent path { fill: none; stroke: var(--discret); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.serpent .eau { stroke: rgba(150, 185, 255, 0.3); stroke-dasharray: 6 6; }
+.serpent .oeil { fill: var(--rose); }
+@keyframes ondule { 50% { transform: translateY(5px); } }
+
+/* ---------- Écrans étroits ---------- */
+@media (max-width: 860px) {
+  .erreur { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 88px; align-content: center; }
+  .carte { max-width: 620px; }
+}
+@media (max-width: 520px) {
+  .coin { font-size: 0.62rem; letter-spacing: 0.1em; }
+  .coin.hg { top: 56px; left: 16px; }
+  .coin.bd { right: 16px; bottom: 16px; }
+  .erreur { padding-top: 104px; }
+  .releve dt { flex-basis: 10ch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .trace { stroke-dashoffset: 0; }
+  .perdu .point { opacity: 1; }
+}

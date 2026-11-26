@@ -14,7 +14,8 @@ portfolio/
 ├── sauvegardes/        # Archives d'anciennes versions (en local)
 └── docs/               # ← Le site publié
     ├── index.html
-    ├── css/style.css
+    ├── 404.html        # Page « Hors des cartes » (affichée par GitHub Pages pour toute adresse inconnue)
+    ├── css/style.css   # (+ 404.css, feuille autonome de la page 404)
     ├── fonts/          # Polices du site (aucun appel à Google Fonts)
     ├── documents/      # CV à télécharger
     ├── images/
@@ -28,7 +29,8 @@ portfolio/
         ├── content.js     # ← TOUT LE TEXTE FRANÇAIS DU SITE EST ICI
         ├── content.en.js  # ← Le même contenu en anglais
         ├── langue.js   # Choisit la langue ; textes de l'interface en français et en anglais
-        └── main.js     # Construit la page, la route de l'ancre et la rose des vents
+        ├── main.js     # Construit la page, la route de l'ancre et la rose des vents
+        └── 404.js      # Langue et rose des vents affolée de la page 404
 ```
 
 ## Lancer le site

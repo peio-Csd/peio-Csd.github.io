@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Même politique de sécurité que le site : uniquement ses propres fichiers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <meta name="robots" content="noindex">
+  <title>Hors des cartes · Alexandre CAUSSADE</title>
+  <!-- Chemins absolus : cette page peut s'afficher à n'importe quelle adresse (/a/b/c) -->
+  <link rel="icon" href="/images/icone/icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/404.css">
+</head>
+<body>
+  <nav class="langues" aria-label="Langue" data-label="choixLangue">
+    <a href="?lang=fr" lang="fr">FR</a>
+    <a href="?lang=en" lang="en">EN</a>
+  </nav>
+  <div class="quadrillage" aria-hidden="true"></div>
+  <span class="coin hg" aria-hidden="true" data-texte="coinHaut">404°00′N · ??°??′O</span>
+  <span class="coin bd" aria-hidden="true" data-texte="coinBas">Relevé incomplet</span>
+
+  <main class="erreur">
+    <div class="recit">
+      <p class="surtitre" data-texte="surtitre">Erreur 404 · Journal de bord</p>
+      <h1 data-texte="titre">Hors des cartes</h1>
+      <p class="message" data-texte="message">Cette page n'apparaît sur aucun relevé. La route s'arrête là où s'arrête la carte.</p>
+
+      <dl class="releve">
+        <div><dt data-texte="destination">Destination</dt><dd id="destination">—</dd></div>
+        <div><dt data-texte="position">Position</dt><dd data-texte="positionValeur">404° N — inconnue</dd></div>
+        <div><dt data-texte="fond">Fond</dt><dd data-texte="fondValeur">non sondé</dd></div>
+        <div><dt data-texte="cap">Cap</dt><dd id="cap" aria-live="off">—</dd></div>
+      </dl>
+
+      <a class="bouton" href="/" data-texte="reprendre">Reprendre la route →</a>
+    </div>
+
+    <figure class="carte" role="img" aria-label="Fragment de carte marine déchiré : la route part du port et s'arrête au bord, où commence la terra incognita." data-label="carteAlt">
+      <svg viewBox="0 0 640 420" aria-hidden="true">
+        <defs>
+          <!-- Bord déchiré de la carte -->
+          <clipPath id="dechirure">
+            <path d="M0,0 L378,0 L392,24 L374,58 L399,92 L381,128 L405,166 L386,204 L411,238 L389,276 L408,314 L385,350 L402,390 L392,420 L0,420 Z"/>
+          </clipPath>
+          <!-- Hachures de la terre ferme -->
+          <pattern id="hachures" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="7" class="hachure"/>
+          </pattern>
+          <!-- Masque qui trace la route peu à peu -->
+          <mask id="trace" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="420">
+            <path class="trace" pathLength="1" d="M112,150 C190,140 220,215 290,222 S370,250 396,262"/>
+          </mask>
+        </defs>
+
+        <!-- La partie connue de la carte -->
+        <g clip-path="url(#dechirure)">
+          <rect class="papier" width="640" height="420"/>
+          <g class="grille">
+            <path d="M80,0V420M160,0V420M240,0V420M320,0V420M400,0V420M0,70H640M0,140H640M0,210H640M0,280H640M0,350H640"/>
+          </g>
+          <!-- Lignes de sonde, parallèles à la côte -->
+          <g class="isobathes">
+            <path d="M64,0 Q92,90 120,170 Q150,260 140,330 Q138,380 168,420"/>
+            <path d="M120,0 Q156,96 190,176 Q226,266 214,334 Q208,384 240,420"/>
+            <path d="M196,0 Q236,104 270,186 Q312,276 296,344 Q290,392 320,420"/>
+            <path d="M286,0 Q326,112 356,196 Q396,290 378,356 Q372,398 400,420"/>
+          </g>
+          <!-- La côte -->
+          <path class="terre" d="M0,0 L44,0 Q50,40 38,70 Q28,98 56,118 Q82,136 70,170 Q58,204 86,228 Q108,250 92,284 Q78,318 100,350 Q116,378 104,420 L0,420 Z"/>
+          <!-- Sondes -->
+          <g class="sondes">
+            <text x="96" y="64">12</text><text x="150" y="96">18</text><text x="128" y="206">21</text>
+            <text x="212" y="72">34</text><text x="176" y="300">40</text><text x="250" y="150">56</text>
+            <text x="268" y="318">88</text><text x="314" y="96">120</text><text x="330" y="190">??</text>
+            <text x="344" y="384">?</text><text x="356" y="44">?</text>
+          </g>
+          <!-- Le port d'attache -->
+          <g class="port" transform="translate(104 150)">
+            <circle r="13"/>
+            <path d="M0,-6 L0,7 M-3.5,-3.5 L3.5,-3.5 M-6,1 Q-5,6.5 0,7 Q5,6.5 6,1"/>
+            <circle cy="-8" r="1.8"/>
+            <text x="22" y="30" text-anchor="middle">caussade.dev</text>
+          </g>
+          <!-- La route prévue, qui file droit dans la déchirure -->
+          <path class="route" mask="url(#trace)" d="M112,150 C190,140 220,215 290,222 S370,250 396,262"/>
+          <!-- Rose des vents affolée -->
+          <g class="rose" transform="translate(262 96)">
+            <circle r="44" class="anneau"/>
+            <circle r="36" class="anneau fin"/>
+            <g class="graduations"><path d="M0,-44V-39M0,44V39M-44,0H-39M44,0H39M31,-31L28,-28M-31,-31L-28,-28M31,31L28,28M-31,31L-28,28"/></g>
+            <g id="aiguille" class="aiguille">
+              <path d="M0,-40 L6,0 L0,40 L-6,0 Z" class="branche"/>
+              <path d="M-40,0 L0,-4.5 L40,0 L0,4.5 Z" class="branche"/>
+              <path d="M0,-40 L6,0 L-6,0 Z" class="nord"/>
+              <text y="-27" text-anchor="middle">N</text>
+            </g>
+            <circle r="2.4" class="pivot"/>
+          </g>
+        </g>
+        <!-- Le bord déchiré, souligné -->
+        <path class="bord" d="M378,0 L392,24 L374,58 L399,92 L381,128 L405,166 L386,204 L411,238 L389,276 L408,314 L385,350 L402,390 L392,420"/>
+        <path class="cadre" d="M392,420 L0.5,420 L0.5,0.5 L378,0.5"/>
+
+        <!-- Fin de la route : un sonar qui ne renvoie aucun écho -->
+        <g class="perdu" transform="translate(396 262)">
+          <circle r="6" class="onde"/>
+          <circle r="6" class="onde deux"/>
+          <circle r="3.5" class="point"/>
+        </g>
+
+        <!-- Au-delà : la terra incognita -->
+        <g class="incognita">
+          <text class="latin" x="528" y="118" text-anchor="middle" transform="rotate(-7 528 118)">Terra incognita</text>
+          <g class="vagues">
+            <path d="M448,196 q8,-6 16,0 t16,0"/><path d="M560,176 q8,-6 16,0 t16,0"/>
+            <path d="M590,250 q8,-6 16,0 t16,0"/><path d="M462,356 q8,-6 16,0 t16,0"/>
+            <path d="M566,382 q8,-6 16,0 t16,0"/>
+          </g>
+          <!-- Serpent de mer -->
+          <g class="serpent">
+            <g transform="translate(470 296)">
+              <path class="eau" d="M-14,4 H168"/>
+              <path d="M0,4 Q16,-30 32,4 M44,4 Q60,-26 76,4 M88,4 Q102,-20 116,4"/>
+              <path d="M124,4 Q122,-34 140,-44 Q156,-50 162,-40 Q164,-34 150,-34 Q140,-32 140,-20 Q142,-6 150,4"/>
+              <path d="M146,-46 L150,-58 L154,-48 M154,-44 L162,-52 L160,-42"/>
+              <circle cx="154" cy="-40" r="1.6" class="oeil"/>
+              <path d="M-12,4 Q-18,-8 -8,-12 Q-10,-4 -4,-2"/>
+            </g>
+          </g>
+          <text class="devise" x="548" y="334" text-anchor="middle">HIC SUNT DRACONES</text>
+        </g>
+      </svg>
+    </figure>
+  </main>
+
+  <script src="/js/404.js"></script>
+</body>
+</html>
